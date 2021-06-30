@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/413bf5df11.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>Checkbox and DropdownList</title>
+  </head>
+  <body>
+    <section class="checkbox">
+      <h3>Checkbox</h3>
+      <div class="checkbox-container">
+        <label for="">Do you have a passport?</label>
+        <div class="options">
+          <label for="yes">
+            <input
+              type="checkbox"
+              class="checkbox"
+              name="yes"
+              id="yes"
+            />Yes</label
+          >
+
+          <label for="no">
+            <input
+              type="checkbox"
+              class="checkbox"
+              name="no"
+              id="no"
+            />No</label
+          >
+        </div>
+        <div class=""input-check"">
+          <input
+            type="text"
+            id="check"
+            placeholder="Please write down your passport number"
+          />
+        </div>
+        <div class="apply">
+          <a href="#">Apply for passport here</a>
+        </div>
+      </div>
+    </section>
+    <section class="dropDown-List">
+      <h3>Dropdown List</h3>
+      <div class="list-container">
+       <div class="selected-list">
+         <p class="text">select the day of departure</p>
+       </div>
+       <ul class="list">
+         <li>Sunday</li>
+         <li>Monday</li>
+         <li>Tuesday</li>
+         <li>Wednesday</li>
+         <li>Thursday</li>
+         <li>Friday</li>
+         <li>Saturday</li>
+       </ul>
+      </div>
+    </section>
+    <script src="./jquery.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
