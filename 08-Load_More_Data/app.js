@@ -1,23 +1,18 @@
 $(document).ready(function () {
   $(".search").keyup(function (e) {
     e.preventDefault();
-
     if (e.key == "Enter") {
-      $(".container").html(``);
-      const data = $(".search").val();
-      if (data) {
-        searchData(data);
-        $(".search").val("");
+      $(".container").html("");
+      const input = $(this).val();
+      if (input) {
+        searchData(input);
       } else {
-        showModal("empty value");
+        showModal("Value is empty, please try again");
       }
+      $(this).val("");
     }
   });
-  $(".close-btn").click(function (e) {
-    e.preventDefault();
-    $(".dark-background").hide();
-    $(".modal").hide();
-  });
+  $(".close-btn").click(closeModal);
 });
 
 function searchData(input) {
@@ -26,42 +21,36 @@ function searchData(input) {
     url: `http://www.omdbapi.com/?s=${input}&apikey=ebb5d959&plot=short`,
     data: "data",
     dataType: "json",
-    success: function (data) {
-      const array = data.Search;
-      if (!array) {
-        showModal(
-          "Can't find film with your keywords please enter another title"
-        );
+    success: function (result) {
+      const data = result.Search;
+      if (!data) {
+        showModal("Can't find movie with that keyword. Please try again");
         return;
       }
-      let index = 2;
-      setData(array, 0);
-      $(".card").slideDown(100);
+      setData(data);
+      let index = 0;
+      showData(index);
       $(".show-btn").show();
-      $(".btn").click(function () {
-        if (index < array.length) {
-          setData(array, index);
-          index = index + 3;
-          $(".card").slideDown(200);
+      $(".btn").click(function (e) {
+        index = index + 3;
+        e.preventDefault();
+        if (index < data.length) {
+          showData(index);
         } else {
-          showModal("No more data");
+          showModal("The end of list");
         }
       });
     },
-    error: function (XMLHttpRequest, textStatus, errorThrown) {
-      console.log(error);
+    error: function () {
+      alert("no data");
     },
   });
 }
-function setData(array, id) {
-  if (!array) {
-    return;
-  }
-  const temp = array.filter((item, index) => index >= id && index <= id + 2);
-  $.each(temp, function (id, item) {
+
+function setData(data) {
+  $.each(data, function (id, item) {
     const { Poster, Title, Type, Year, imdbID } = item;
 
-    // let movie = Title.substring(0, 45);
     $(".container").append(`
         <div class="card">
         <div class="image">
@@ -75,12 +64,21 @@ function setData(array, id) {
         </div>
         
         `);
-  }).join("");
+  });
+}
+function showData(index) {
+  $(".card")
+    .slice(index, index + 3)
+    .slideDown(100);
+}
+function showModal(text) {
+  $(".modal h2").text(text);
+  $(".dark-background").show(100);
+  $(".modal").show(200);
 }
 
-function showModal(data) {
-  $(".modal h2").text(data);
-  $(".dark-background").show();
-  $(".modal").show();
+function closeModal() {
+  $(".dark-background").hide(200);
+  $(".modal").hide(100);
   $(".show-btn").hide();
 }
