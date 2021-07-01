@@ -1,0 +1,137 @@
+:root {
+  --font-color: #284b63;
+  --primary-dark: #b392ac;
+  --primary-light: #ffffff;
+  --primary-medium: #d9d9d9;
+  --secondary-dark: #735d78;
+  --secondary-light: #fffcf2;
+  --primary-medium: #ccc5b9;
+  --radius: 0.75rem;
+  --transition: all 0.4s ease-in;
+  --primary-font: "Roboto Condensed", sans-serif;
+  --secondary-font: "Montserrat", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  background-color: var(--secondary-dark);
+  font-family: var(--primary-font);
+  color: var(--primary-light);
+  position: relative;
+}
+
+.navbar {
+  margin: 2rem auto;
+  width: 80%;
+  line-height: 3rem;
+  height: 3rem;
+  padding: 0 5%;
+  max-width: 700px;
+  background-color: var(--primary-dark);
+}
+
+.container {
+  margin: 2rem auto;
+  width: 80%;
+  max-width: 700px;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1rem;
+  -ms-grid-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+  background-color: var(--primary-dark);
+  width: 100%;
+  height: 400px;
+  display: none;
+}
+
+.image {
+  width: 100%;
+  height: 75%;
+  overflow: hidden;
+}
+
+.image img {
+  width: 100%;
+}
+
+.info {
+  padding: 0.5rem;
+}
+
+.show-btn {
+  display: none;
+}
+
+.btn {
+  display: block;
+  font-family: var(--secondary-font);
+  margin: auto;
+  font-size: 1.2rem;
+  border: 2px solid var(--primary-light);
+  background-color: transparent;
+  color: var(--primary-light);
+  padding: 1rem;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.dark-background {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.349);
+  width: 100%;
+  height: 100vh;
+  top: -2rem;
+  left: 0;
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  display: none;
+  text-align: center;
+  font-family: var(--secondary-font);
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: var(--primary-dark);
+  width: 400px;
+  height: 200px;
+  background-color: var(--primary-light);
+  padding: 2rem;
+}
+
+.close-btn {
+  display: block;
+  margin: 1rem auto;
+  font-family: var(--secondary-font);
+  font-size: 1.2rem;
+  border: 2px solid var(--secondary-dark);
+  background-color: transparent;
+  color: var(--secondary-dark);
+  padding: 0.2rem 1rem;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+
+.close-btn:hover {
+  background-color: var(--secondary-dark);
+  color: var(--primary-light);
+}
+/*# sourceMappingURL=style.css.map */
